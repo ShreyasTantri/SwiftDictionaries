@@ -1,4 +1,4 @@
-// 1.
+// 1. Filter
 var tasks = ["Walk": "low", "Code": "high", "Study": "medium"]
 
 tasks["Study"] = "high"
@@ -13,7 +13,7 @@ tasks["Meditate"] = "low"
 tasks.filter({ $0.value == "high" })
 print(tasks)
 
-// 2.
+// 2. Remove - removeValue
 var ages = ["Mia": 21, "Leo": 19, "Sara": 22]
 
 ages.removeValue(forKey: "Leo")
@@ -25,6 +25,7 @@ if let saraAge = ages["Leo"] {
     print("Hi")
 }
 
+// 3. Map - mapValues
 let moods = ["Morning": "sleepy", "Afternoon": "neutral", "Evening": "happy"]
 
 moods.mapValues({ $0.uppercased() })
@@ -44,6 +45,17 @@ let grades = ["Anna": "A", "Tom": "B", "Sam": "A", "Lisa": "C"]
 
 grades.filter({ $0.value == "A" }).count
 
+
+// 3. reduce
+let numbers = ["one": 1, "two": 2, "three": 3]
+let sum = numbers.reduce(0) { $0 + $1.value }
+       
+// 4. forEach
+let names = ["a": "Alice", "b": "Bob"]
+names.forEach({ print("Key: \($0.key), Value: \($0.value)") })
+
+// 5. contains(where:)
+numbers.contains(where: { $0.value % 2 == 0 })
 
 // Add gaming to Bob's hobby
 //var hobbies: [String: [String]] = [
@@ -66,3 +78,19 @@ grades.filter({ $0.value == "A" }).count
 //    bobHobbies.append("gaming")
 //}
 //print(hobbies)
+
+
+var hobbies: [String: [String]] = [
+    "Alice": ["Reading", "Swimming"],
+    "Bob": ["Cycling", "Boxing"],
+    "Shreyas": ["Coding", "Singing"]
+]
+
+hobbies["Bob"]?.append("Gaming")
+print(hobbies)
+
+if var bobHobbies = hobbies["Bob"] {
+    bobHobbies.append("Running")
+    hobbies["Bob"] = bobHobbies
+}
+print(hobbies)
