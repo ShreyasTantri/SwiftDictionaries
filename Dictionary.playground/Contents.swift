@@ -94,3 +94,19 @@ if var bobHobbies = hobbies["Bob"] {
     hobbies["Bob"] = bobHobbies
 }
 print(hobbies)
+
+var scores = ["Alice": 95, "Bob": 82]
+var val = scores["Bob"] ?? 0
+print(val)
+
+// Increment
+scores["Bob", default: 0] += 1
+print(scores["Bob"] ?? 0)
+
+// Update value
+
+scores["Dave"] = 77
+print(scores)
+
+scores.updateValue(90, forKey: "Alice")
+print(scores)
